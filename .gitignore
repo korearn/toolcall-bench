@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+dist/
+*.egg-info/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+
+# Local config and run artifacts
+.env
+*.sqlite
+*.db
+results/local/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

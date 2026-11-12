@@ -1,0 +1,42 @@
+[project]
+name = "toolcall-bench"
+version = "0.0.1"
+description = "Deterministic tool-calling evals for local LLMs that fit in 16 GB of VRAM."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Leonardo León" }]
+requires-python = ">=3.12"
+dependencies = [
+    "typer>=0.15",
+]
+
+[project.scripts]
+tcb = "toolcall_bench.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/toolcall_bench"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "ANN", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
